@@ -1,11 +1,13 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 return {
-  font = wezterm.font {
-    family = 'Fantasque Sans Mono',
+  font = wezterm.font_with_fallback {
+    'FantasqueSansM Nerd Font',
+    'Noto Sans Mono CJK SC'
   },
   font_size = 13,
-  color_scheme = "SpaceGray Eighties",
+  color_scheme = "Afterglow",
   keys = {
     -- This will create a new split and run your default program inside it
     {
@@ -17,6 +19,18 @@ return {
       key = '(',
       mods = 'CTRL|SHIFT',
       action = wezterm.action.SplitPane {  direction = 'Right' },
-    }
+    },
   },
+  mouse_bindings = {
+    {
+      event = { Up = { streak = 1, button = 'Left' } },
+      mods = 'NONE',
+      action = act.Nop
+    },
+    {
+      event = { Up = { streak = 1, button = 'Left' } },
+      mods = 'CTRL',
+      action = act.OpenLinkAtMouseCursor,
+    }
+  }
 }
