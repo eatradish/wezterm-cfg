@@ -2,6 +2,11 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
+  enable_scroll_bar = true,
+  scrollback_lines = 20000,
+  colors = {
+    scrollbar_thumb = '#787878'
+  },
   font = wezterm.font_with_fallback {
     'FantasqueSansM Nerd Font',
     'Noto Sans Mono CJK SC'
